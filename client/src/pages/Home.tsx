@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Zap, Shield, BarChart3, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Zap, Shield } from "lucide-react";
 import { useState } from "react";
+import { Link } from "wouter";
 
 /**
- * BlueReader Pro - Home Page
+ * Blue Reader - Home Page
  * Design: Modern Minimalist Premium
  * Color Scheme: Deep Professional Blue + Clean Whites
  * Typography: Plus Jakarta Sans (display) + Inter (body)
@@ -18,7 +19,7 @@ export default function Home() {
       id: 1,
       title: "Português",
       category: "Língua e Literatura",
-      year: "6º ano",
+      year: "7º ano",
       color: "from-purple-600 to-pink-500",
       progress: 35,
     },
@@ -26,25 +27,9 @@ export default function Home() {
       id: 2,
       title: "Ciências",
       category: "Vida e Natureza",
-      year: "6º ano",
+      year: "7º ano",
       color: "from-green-600 to-emerald-500",
       progress: 42,
-    },
-    {
-      id: 3,
-      title: "História",
-      category: "Sociedade e Cidadania",
-      year: "6º ano",
-      color: "from-orange-600 to-red-500",
-      progress: 28,
-    },
-    {
-      id: 4,
-      title: "Matemática",
-      category: "Ideias e Desafios",
-      year: "6º ano",
-      color: "from-blue-600 to-cyan-500",
-      progress: 60,
     },
   ];
 
@@ -80,22 +65,28 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663759811217/AjGU6idPGYFjruxwmEbJKL/bluereader-logo-gwaDuPCUaKPwUweQRZxFCn.webp"
-              alt="BlueReader Pro"
+              alt="Blue Reader"
               className="h-8 w-8"
             />
-            <span className="text-xl font-bold text-foreground">BlueReader Pro</span>
+            <span className="text-xl font-bold text-foreground">Blue Reader</span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition">
               Recursos
             </a>
-            <a href="#library" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Biblioteca
-            </a>
+            <Link href="/reader">
+              <a className="text-sm text-muted-foreground hover:text-foreground transition">
+                Biblioteca
+              </a>
+            </Link>
             <a href="#stats" className="text-sm text-muted-foreground hover:text-foreground transition">
-              Estatísticas
+              Sobre
             </a>
-            <Button className="bg-primary hover:bg-primary/90">Começar Agora</Button>
+            <Link href="/reader">
+              <a className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+                Começar Agora
+              </a>
+            </Link>
           </nav>
         </div>
       </header>
@@ -118,12 +109,14 @@ export default function Home() {
                 Organize com <span className="text-primary">Inteligência</span>.
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-                BlueReader Pro é a plataforma premium para gerenciar sua biblioteca digital. Acesse documentos, livros e materiais de estudo através de uma interface elegante e de alta performance.
+                Blue Reader é a plataforma premium para gerenciar sua biblioteca digital. Acesse documentos, livros e materiais de estudo através de uma interface elegante e de alta performance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2">
-                  Explorar Biblioteca <ArrowRight className="w-4 h-4" />
-                </Button>
+                <Link href="/reader">
+                  <a className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition">
+                    Explorar Biblioteca <ArrowRight className="w-4 h-4" />
+                  </a>
+                </Link>
                 <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
                   Saiba Mais
                 </Button>
@@ -186,7 +179,7 @@ export default function Home() {
 
           {/* TABS */}
           <div className="flex gap-2 mb-8 border-b border-border pb-4">
-            {["all", "recent", "favorites"].map((tab) => (
+            {["all", "recent"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -198,7 +191,6 @@ export default function Home() {
               >
                 {tab === "all" && "Todos"}
                 {tab === "recent" && "Recentes"}
-                {tab === "favorites" && "Favoritos"}
               </button>
             ))}
           </div>
@@ -255,13 +247,15 @@ export default function Home() {
               Pronto para Começar?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Junte-se a milhares de leitores que já transformaram sua experiência de aprendizado com BlueReader Pro.
+              Junte-se a milhares de leitores que já transformaram sua experiência de aprendizado com Blue Reader.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white gap-2">
-              Comece Sua Biblioteca <ArrowRight className="w-4 h-4" />
-            </Button>
+            <Link href="/reader">
+              <a className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition">
+                Comece Sua Biblioteca <ArrowRight className="w-4 h-4" />
+              </a>
+            </Link>
             <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
               Contato
             </Button>
@@ -277,10 +271,10 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <img
                   src="https://d2xsxph8kpxj0f.cloudfront.net/310519663759811217/AjGU6idPGYFjruxwmEbJKL/bluereader-logo-gwaDuPCUaKPwUweQRZxFCn.webp"
-                  alt="BlueReader Pro"
+                  alt="Blue Reader"
                   className="h-6 w-6"
                 />
-                <span className="font-bold text-foreground">BlueReader Pro</span>
+                <span className="font-bold text-foreground">Blue Reader</span>
               </div>
               <p className="text-sm text-muted-foreground">
                 A plataforma premium de leitura digital.
@@ -312,7 +306,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2026 BlueReader Pro. Todos os direitos reservados.</p>
+            <p>&copy; 2026 Blue Reader. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
